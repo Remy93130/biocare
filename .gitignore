@@ -16,3 +16,8 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 composer.lock
+
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###

@@ -10,7 +10,7 @@ namespace PackageVersions;
  */
 final class Versions
 {
-    const ROOT_PACKAGE_NAME = 'symfony/website-skeleton';
+    const ROOT_PACKAGE_NAME = '__root__';
     const VERSIONS = array (
   'doctrine/annotations' => 'v1.6.0@c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5',
   'doctrine/cache' => 'v1.8.0@d768d58baee9a4862ca783840eca1b9add7a7f57',
@@ -96,6 +96,7 @@ final class Versions
   'easycorp/easy-log-handler' => 'v1.0.7@5f95717248d20684f88cfb878d8bf3d78aadcbba',
   'facebook/webdriver' => '1.6.0@bd8c740097eb9f2fc3735250fc1912bc811a954e',
   'nikic/php-parser' => 'v4.1.1@8aae5b59b83bb4d0dbf07b0a835f2680a658f610',
+  'squizlabs/php_codesniffer' => '3.4.0@379deb987e26c7cd103a7b387aea178baec96e48',
   'symfony/browser-kit' => 'v4.2.1@db7e59fec9c82d45e745eb500e6ede2d96f4a6e9',
   'symfony/css-selector' => 'v4.2.1@aa9fa526ba1b2ec087ffdfb32753803d999fcfcd',
   'symfony/debug-bundle' => 'v4.2.1@e52fc6ac1fe1150316f9991342ac2b4a9c1e1995',
@@ -111,13 +112,13 @@ final class Versions
   'symfony/var-dumper' => 'v4.2.1@db61258540350725f4beb6b84006e32398acd120',
   'symfony/web-profiler-bundle' => 'v4.2.1@198cb0a6b85346bbab5e1bc74a0eb175b9fa2d08',
   'symfony/web-server-bundle' => 'v4.2.1@6291444989fc753df2a9c86e5f6d5af4616804f5',
-  'paragonie/random_compat' => '2.*@',
-  'symfony/polyfill-ctype' => '*@',
-  'symfony/polyfill-iconv' => '*@',
-  'symfony/polyfill-php71' => '*@',
-  'symfony/polyfill-php70' => '*@',
-  'symfony/polyfill-php56' => '*@',
-  'symfony/website-skeleton' => 'v4.2.1.5@',
+  'paragonie/random_compat' => '2.*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  'symfony/polyfill-ctype' => '*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  'symfony/polyfill-iconv' => '*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  'symfony/polyfill-php71' => '*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  'symfony/polyfill-php70' => '*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  'symfony/polyfill-php56' => '*@9bfdb85aeb84953ae3a444a386f434e8db510325',
+  '__root__' => 'dev-master@9bfdb85aeb84953ae3a444a386f434e8db510325',
 );
 
     private function __construct()
