@@ -15,7 +15,7 @@ class PersonnalFixtures extends Fixture
         for ($i = 0; $i < 20; $i++) {
             $personnal = new Personnal();
             $personnal
-                ->setSurname($faker->lastName)
+                ->setSurname($faker->firstName)
                 ->setLastname($faker->lastName)
                 ->setHospitalNode(null)
                 ->setAssignment(null)
@@ -24,7 +24,18 @@ class PersonnalFixtures extends Fixture
                 ->setPassword($faker->password);
             $manager->persist($personnal);
         }
-
+        
+        $personnal = new Personnal();
+        $personnal
+            ->setSurname("Paul")
+            ->setLastname("Didier")
+            ->setHospitalNode(null)
+            ->setAssignment(null)
+            ->setRole(null)
+            ->setEmail("test@test.fr")
+            ->setPassword('$2y$13$rYPNFY7z0lbXbJWRVp80huRaK8jDmiZsI6fZEd48EiS8eGfyo1BR2');
+        
+        $manager->persist($personnal);
         $manager->flush();
     }
 }
