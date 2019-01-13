@@ -87,4 +87,12 @@ class DMPController extends AbstractController
 
         return $this->redirectToRoute('dmp_index');
     }
+    
+    /**
+     * @TODO: Check if the user have permissions for access to this item 
+     */
+    private function checkUserAuthorization()
+    {
+        
+    }
 }
