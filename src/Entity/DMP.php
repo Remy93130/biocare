@@ -216,4 +216,13 @@ class DMP
 
         return $this;
     }
+    
+    /**
+     * Return format to display DMPs in other form
+     * @return string
+     */
+    public function getDisplayName(): string
+    {
+        return $this->surname . " " . $this->name . " - " . $this->socialNumber;
+    }
 }

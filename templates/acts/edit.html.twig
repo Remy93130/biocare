@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Edition Acts{% endblock %}
+
+{% block body %}
+	<div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+			    <h1>Editer Acts</h1>
+
+			    {{ include('acts/_form.html.twig', {'button_label': 'Update'}) }} <br>
+
+			    {{ include('acts/_delete_form.html.twig') }}
+
+			    <a href="{{ path('acts_index') }}">Retour à la liste</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $("#acts_DMP").prop("disabled", true);
+    </script>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Nouvel Acte{% endblock %}
+
+{% block body %}
+	<div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+			    <h1 class="text-center">Crée un nouvel acte</h1>
+
+			    {{ include('acts/_form.html.twig') }}
+
+			    <a href="{{ path('acts_index') }}">Retour à la liste</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
