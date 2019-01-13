@@ -11,10 +11,13 @@
     <rule ref="PSR2"/>
 
     <file>bin/</file>
-    <file>config/</file>
     <file>public/</file>
     <file>src/</file>
 
+    <exclude-pattern>public/</exclude-pattern>
+    <exclude-pattern>src/Kernel.php</exclude-pattern>
     <exclude-pattern>src/Migrations</exclude-pattern>
+    <exclude-pattern>src/Repository</exclude-pattern>
+    <exclude-pattern>src/Entity</exclude-pattern>
 
 </ruleset>

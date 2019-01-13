@@ -25,7 +25,6 @@ class HospitalNode
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Personnal", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
      */
     private $responsible;
 
@@ -41,7 +40,6 @@ class HospitalNode
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeNode", inversedBy="hospitalNodes")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $typeNode;
 

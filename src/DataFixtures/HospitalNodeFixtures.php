@@ -4,14 +4,15 @@ namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Entity\HospitalNode;
 
-class AppFixtures extends Fixture
+class HospitalNodeFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
+        $node = new HospitalNode();
+        $node->setResponsible(null);
+        
         $manager->flush();
     }
 }

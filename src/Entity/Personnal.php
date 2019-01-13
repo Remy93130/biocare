@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PersonnalRepository")
  */
-class Personnal
+class Personnal implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -35,7 +36,6 @@ class Personnal
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="personnals")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $role;
 
@@ -46,13 +46,12 @@ class Personnal
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\HospitalNode", inversedBy="workers")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $hospitalNode;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\HospitalNode", inversedBy="personnals")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $assignment;
 
@@ -61,6 +60,11 @@ class Personnal
      */
     private $acts;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $password;
+    
     public function __construct()
     {
         $this->specialization = new ArrayCollection();
@@ -200,4 +204,31 @@ class Personnal
 
         return $this;
     }
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+    
+    public function setPassword(string $password): self {
+        $this->password = $password;
+        
+        return $this;
+    }
+
+    public function eraseCredentials()
+    {}
+
+    public function getSalt()
+    {}
+
+    public function getRoles()
+    {
+        return ['ROLE_MEMBER'];
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->getEmail();
+    }
+
 }
