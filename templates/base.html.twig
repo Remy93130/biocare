@@ -30,7 +30,7 @@
                 </ul>
                 <span class="navbar-text">
                     {% if app.user %}
-                        NOM Prénom
+                        {{ app.user.lastname}} {{ app.user.firstname }}
                     {% endif %}                   
                 </span>
             </div>

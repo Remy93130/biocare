@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DMP{% endblock %}
+
+{% block body %}
+    <h1>Edit DMP</h1>
+
+    {{ include('dmp/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('dmp_index') }}">back to list</a>
+
+    {{ include('dmp/_delete_form.html.twig') }}
+{% endblock %}

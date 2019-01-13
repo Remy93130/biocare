@@ -58,6 +58,11 @@ class HospitalNode
      */
     private $histories;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
@@ -108,7 +113,7 @@ class HospitalNode
         return $this->responsible;
     }
 
-    public function setResponsible(Personnal $responsible): self
+    public function setResponsible($responsible): self
     {
         $this->responsible = $responsible;
 
@@ -259,6 +264,18 @@ class HospitalNode
                 $history->setHospitalNode(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }

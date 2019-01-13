@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DMP index{% endblock %}
+
+{% block body %}
+    <h1>DMP index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>SocialNumber</th>
+                <th>BirthDate</th>
+                <th>BirthPlace</th>
+                <th>Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dmp in DMPs %}
+            <tr>
+                <td>{{ dmp.id }}</td>
+                <td>{{ dmp.surname }}</td>
+                <td>{{ dmp.name }}</td>
+                <td>{{ dmp.socialNumber }}</td>
+                <td>{{ dmp.birthDate ? dmp.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ dmp.birthPlace }}</td>
+                <td>{{ dmp.address }}</td>
+                <td>
+                    <a href="{{ path('dmp_show', {'id': dmp.id}) }}">show</a>
+                    <a href="{{ path('dmp_edit', {'id': dmp.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('dmp_new') }}">Create new</a>
+{% endblock %}

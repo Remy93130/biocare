@@ -21,7 +21,7 @@ class PersonnalFixtures extends Fixture
                 ->setAssignment(null)
                 ->setRole(null)
                 ->setEmail($faker->email)
-                ->setPassword($faker->password);
+                ->setPassword('$2y$13$rYPNFY7z0lbXbJWRVp80huRaK8jDmiZsI6fZEd48EiS8eGfyo1BR2'); // The password is toor
             $manager->persist($personnal);
         }
         
