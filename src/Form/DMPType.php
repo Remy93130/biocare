@@ -35,6 +35,7 @@ class DMPType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => DMP::class,
+            'translation_domain' => 'form_dmp',
         ]);
     }
 }

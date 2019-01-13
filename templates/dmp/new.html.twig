@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New DMP{% endblock %}
+{% block title %}{{ parent() }}Nouveau DMP{% endblock %}
 
 {% block body %}
-    <h1>Create new DMP</h1>
+	<div class="container-fluid" style="margin-top: 2%;">
+	    <div class="row">
+	        <div class="col-lg-8 offset-lg-2">
+	        	<h1 class="text-center">Nouveau DMP</h1>
 
-    {{ include('dmp/_form.html.twig') }}
-
-    <a href="{{ path('dmp_index') }}">back to list</a>
+	        	{{ include('dmp/_form.html.twig') }}
+	        	<a href="{{ path('dmp_index') }}">Retour à la liste</a>
+	        </div>
+	    </div>
+	</div>
 {% endblock %}

@@ -1,46 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}DMP{% endblock %}
+{% block title %}{{ parent() }}DMP{% endblock %}
 
 {% block body %}
-    <h1>DMP</h1>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">DMP</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ dmp.id }}</td>
-            </tr>
-            <tr>
-                <th>Surname</th>
-                <td>{{ dmp.surname }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ dmp.name }}</td>
-            </tr>
-            <tr>
-                <th>SocialNumber</th>
-                <td>{{ dmp.socialNumber }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ dmp.birthDate ? dmp.birthDate|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>BirthPlace</th>
-                <td>{{ dmp.birthPlace }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ dmp.address }}</td>
-            </tr>
-        </tbody>
-    </table>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ dmp.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom</th>
+                            <td>{{ dmp.surname }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prenom</th>
+                            <td>{{ dmp.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Numéro Sécurité Sociale</th>
+                            <td>{{ dmp.socialNumber }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date de naissance</th>
+                            <td>{{ dmp.birthDate ? dmp.birthDate|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Lieu de naissance</th>
+                            <td>{{ dmp.birthPlace }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse</th>
+                            <td>{{ dmp.address }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="{{ path('dmp_index') }}">Retour à la liste</a><br>
+                <a href="{{ path('dmp_edit', {'id': dmp.id}) }}">Modifier</a>
 
-    <a href="{{ path('dmp_index') }}">back to list</a>
+                {{ include('dmp/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+    
 
-    <a href="{{ path('dmp_edit', {'id': dmp.id}) }}">edit</a>
-
-    {{ include('dmp/_delete_form.html.twig') }}
+    
 {% endblock %}
