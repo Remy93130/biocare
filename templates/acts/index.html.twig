@@ -11,6 +11,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Auteur</th>
                             <th>Date de creation</th>
                             <th>Etat</th>
                             <th>Patient</th>
@@ -21,6 +22,7 @@
                     {% for act in acts %}
                         <tr>
                             <td>{{ act.id }}</td>
+                            <td>{{ act.author.surname }} {{ act.author.lastname }}</td>
                             <td>{{ act.dateCreation ? act.dateCreation|date('Y-m-d') : '' }}</td>
                             <td>{{ act.state ? 'Terminé' : 'En cours' }}</td>
                             <td>{{ act.dmp.surname }} {{ act.dmp.name }}<br>{{ act.dmp.socialNumber }}</td>
