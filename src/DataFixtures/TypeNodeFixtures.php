@@ -18,9 +18,12 @@ class TypeNodeFixtures extends Fixture
             "UNITE_HOSPITALIERE"
         ];
         
+        $i = 0;
         foreach ($types as $type_name) {
             $type = new TypeNode();
-            $type->setName($type_name);
+            $type->setName($type_name)
+                ->setWeight($i);
+            $i++;
             $manager->persist($type);
         }
         $manager->flush();

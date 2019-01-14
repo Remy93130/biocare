@@ -230,5 +230,10 @@ class Personnal implements UserInterface
     {
         return $this->getEmail();
     }
+    
+    public function getDisplayName(): string
+    {
+        return $this->lastname . ' ' . $this->surname . ' / ' . $this->email;
+    }
 
 }

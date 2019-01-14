@@ -28,6 +28,11 @@ class TypeNode
      */
     private $hospitalNodes;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $weight;
+
     public function __construct()
     {
         $this->hospitalNodes = new ArrayCollection();
@@ -77,6 +82,18 @@ class TypeNode
                 $hospitalNode->setTypeNode(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getWeight(): ?int
+    {
+        return $this->weight;
+    }
+
+    public function setWeight(int $weight): self
+    {
+        $this->weight = $weight;
 
         return $this;
     }
