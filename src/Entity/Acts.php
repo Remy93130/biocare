@@ -151,4 +151,13 @@ class Acts
 
         return $this;
     }
+    
+    /**
+     * Return format to display Acts in other form
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->author->getLastname() . " " . $this->dateCreation->format("Y-m-d");
+    }
 }

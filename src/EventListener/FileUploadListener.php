@@ -21,7 +21,7 @@ class FileUploadListener
     {
         $entity = $args->getEntity();
         
-        $this->UploadFile($entity); 
+        $this->UploadFile($entity);
     }
     
     public function preUpdate(PreUpdateEventArgs $args)

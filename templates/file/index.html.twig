@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Fichier index{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">Fichier index</h1>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Fichier</th>
+                            <th>Nom</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for file in files %}
+                        <tr>
+                            <td>{{ file.id }}</td>
+                            <td>
+                                <a href="{{ asset('uploads/' ~ file.file) }}" target="_blank">Télécharger</a>
+                            </td>
+                            <td>{{ file.name }}</td>
+                            <td>
+                                <a href="{{ path('file_show', {'id': file.id}) }}">Voir</a>
+                                {# <a href="{{ path('file_edit', {'id': file.id}) }}">edit</a> #}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <a href="{{ path('file_new') }}">Nouveau fichier</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
