@@ -1,11 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New HospitalNode{% endblock %}
+{% block title %}{{ parent() }}Nouvelle Structure{% endblock %}
 
 {% block body %}
-    <h1>Create new HospitalNode</h1>
+	<div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+			    <h1 class="text-center">Créer une Nouvelle Structure</h1>
 
-    {{ include('hospital_node/_form.html.twig') }}
+			    {{ include('hospital_node/_form.html.twig') }}
 
-    <a href="{{ path('hospital_node_index') }}">back to list</a>
+			    <a href="{{ path('hospital_node_index') }}">Retour à la liste</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}

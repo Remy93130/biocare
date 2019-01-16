@@ -37,6 +37,7 @@ class HospitalNodeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => HospitalNode::class,
+            'translation_domain' => 'form_hospitalNode',
         ]);
     }
 }

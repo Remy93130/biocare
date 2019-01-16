@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HospitalNode index{% endblock %}
+{% block title %}{{ parent() }}Structure index{% endblock %}
 
 {% block body %}
-    <h1>HospitalNode index</h1>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">Structure index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for hospital_node in hospital_nodes %}
-            <tr>
-                <td>{{ hospital_node.id }}</td>
-                <td>{{ hospital_node.name }}</td>
-                <td>
-                    <a href="{{ path('hospital_node_show', {'id': hospital_node.id}) }}">show</a>
-                    <a href="{{ path('hospital_node_edit', {'id': hospital_node.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Responsable</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for hospital_node in hospital_nodes %}
+                        <tr>
+                            <td>{{ hospital_node.id }}</td>
+                            <td>{{ hospital_node.name }}</td>
+                            <td>{{ hospital_node.responsible.email }}</td>
+                            <td>
+                                <a href="{{ path('hospital_node_show', {'id': hospital_node.id}) }}">Voir</a> /
+                                <a href="{{ path('hospital_node_edit', {'id': hospital_node.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">Retour à la liste</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
 
-    <a href="{{ path('hospital_node_new') }}">Create new</a>
+                <a href="{{ path('hospital_node_new') }}">Nouvelle structure</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
