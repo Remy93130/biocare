@@ -14,3 +14,10 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $("#dmp_nodeManaging").prepend($('<option>', {value:null, text:''}));;
+    </script>
+{% endblock %}

@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <th>Adresse</th>
-                            <td>{{ dmp.address }}</td>
+                            <td>{{ dmp.address|replace({'\n': " ",}) }}</td>
                         </tr>
                     </tbody>
                 </table>

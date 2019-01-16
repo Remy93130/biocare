@@ -29,7 +29,7 @@
                             <td>{{ dmp.socialNumber }}</td>
                             <td>{{ dmp.birthDate ? dmp.birthDate|date('Y-m-d') : '' }}</td>
                             <td>{{ dmp.birthPlace }}</td>
-                            <td>{{ dmp.address }}</td>
+                            <td>{{ dmp.address|replace({'\n': " ",}) }}</td>
                             <td>
                                 <a href="{{ path('dmp_show', {'id': dmp.id}) }}">Voir</a> /
                                 <a href="{{ path('dmp_edit', {'id': dmp.id}) }}">Modifier</a>

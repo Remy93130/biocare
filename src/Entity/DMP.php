@@ -34,7 +34,7 @@ class DMP
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="bigint", options={"unsigned"=true})
      */
     private $socialNumber;
 
