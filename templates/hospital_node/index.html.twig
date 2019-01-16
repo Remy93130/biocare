@@ -13,6 +13,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Nom</th>
+                            <th>Type</th>
                             <th>Responsable</th>
                             <th>Options</th>
                         </tr>
@@ -22,6 +23,7 @@
                         <tr>
                             <td>{{ hospital_node.id }}</td>
                             <td>{{ hospital_node.name }}</td>
+                            <td>{{ hospital_node.typeNode.name|capitalize }}</td>
                             <td>{{ hospital_node.responsible.email }}</td>
                             <td>
                                 <a href="{{ path('hospital_node_show', {'id': hospital_node.id}) }}">Voir</a> /

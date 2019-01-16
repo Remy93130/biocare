@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 /**
  * @Route("/hospitalnode")
@@ -54,9 +55,17 @@ class HospitalNodeController extends AbstractController
                         'form' => $form->createView(),
                     ]);
             }
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($hospitalNode);
-            $entityManager->flush();
+            try {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($hospitalNode);
+                $entityManager->flush();
+            } catch (UniqueConstraintViolationException $e) {
+                $this->addFlash("danger", "Cette personne est deja responsable d'une structure !");
+                return $this->render('hospital_node/new.html.twig', [
+                    'hospital_node' => $hospitalNode,
+                    'form' => $form->createView(),
+                ]);
+            }
 
             return $this->redirectToRoute('hospital_node_index');
         }
@@ -106,7 +115,7 @@ class HospitalNodeController extends AbstractController
                 $entityManager->remove($hospitalNode);
                 $entityManager->flush();
             } catch (ForeignKeyConstraintViolationException $e) {
-                $this->addFlash("danger", "Il reste des employees qui travailles dans cette structure !");
+                $this->addFlash("danger", "Il reste des employees qui travailles dans cette structure ou possede un fils !");
             }
         }
 

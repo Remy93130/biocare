@@ -19,6 +19,10 @@
                             <td>{{ hospital_node.name }}</td>
                         </tr>
                         <tr>
+                            <th>Type</th>
+                            <td>{{ hospital_node.typeNode.name|capitalize }}</td>
+                        </tr>
+                        <tr>
                             <th>Responsable</th>
                             <td>{{ hospital_node.responsible.email }}</td>
                         </tr>
