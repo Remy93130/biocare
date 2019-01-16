@@ -22,7 +22,7 @@ class PersonnalType extends AbstractType
             ->add('surname')
             ->add('lastname')
             ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
+            ->add('password')
             ->add('role', EntityType::class, [
                 'class' => Role::class,
                 'choice_label' => 'name'
@@ -31,12 +31,13 @@ class PersonnalType extends AbstractType
                  'class' => Specialization::class,
                  'choice_label' => 'name',
                  'multiple' => true,
+                 'required' => false,
              ])
-            // ->add('hospitalNode')
-            ->add('assignment', EntityType::class, [
+            ->add('hospitalNode', EntityType::class, [
                 'class' => HospitalNode::class,
                 'choice_label' => 'name',
             ])
+            // ->add('assignment', EntityType::class, ['class' => HospitalNode::class,'choice_label' => 'name',]) // For responsible then suck
         ;
     }
 

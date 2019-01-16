@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Personnal{% endblock %}
+{% block title %}{{ parent() }}Nouveau personnel{% endblock %}
 
 {% block stylesheets %}
 	{{ parent() }}
@@ -8,11 +8,17 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Create new Personnal</h1>
+	<div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+			    <h1 class="text-center">Ajouter nouveau personnel</h1>
 
-    {{ include('personnal/_form.html.twig') }}
+			    {{ include('personnal/_form.html.twig') }}
 
-    <a href="{{ path('personnal_index') }}">back to list</a>
+			    <a href="{{ path('personnal_index') }}">Retour à la liste</a>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {% block javascripts %}

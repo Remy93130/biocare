@@ -61,7 +61,7 @@ class Personnal implements UserInterface
     private $acts;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $password;
     

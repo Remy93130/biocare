@@ -1,13 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Personnal{% endblock %}
+{% block title %}{{ parent() }}Modifier personnel{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Personnal</h1>
+	<div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+			    <h1 class="text-center">Modifier personnel</h1>
 
-    {{ include('personnal/_form.html.twig', {'button_label': 'Update'}) }}
+			    {{ include('personnal/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('personnal_index') }}">back to list</a>
+			    <a href="{{ path('personnal_index') }}">Retour à la liste</a>
 
-    {{ include('personnal/_delete_form.html.twig') }}
+			    {{ include('personnal/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+	<script type="text/javascript">
+		$("#personnal_specialization").select2();
+		$("#personnal_password").prop("type", "hidden");
+		$("label[for='personnal_password']").remove();
+		$("#personnal_hospitalNode").prepend($('<option>', {value:null, text:''}));;
+	</script>
 {% endblock %}

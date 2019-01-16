@@ -33,7 +33,7 @@ class PersonnalController extends AbstractController
         $form = $this->createForm(PersonnalType::class, $personnal);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $personnal->getPassword() != null) {
             $pwd = $personnal->getPassword();
             $personnal->setPassword($encoder->encodePassword($personnal, $pwd));
             $entityManager = $this->getDoctrine()->getManager();
