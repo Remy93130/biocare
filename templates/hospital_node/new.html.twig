@@ -3,15 +3,25 @@
 {% block title %}{{ parent() }}Nouvelle Structure{% endblock %}
 
 {% block body %}
-	<div class="container-fluid" style="margin-top: 2%;">
+    <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-			    <h1 class="text-center">Créer une Nouvelle Structure</h1>
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-dismissible fade show alert-{{ label }}" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                <h1 class="text-center">Créer une Nouvelle Structure</h1>
 
-			    {{ include('hospital_node/_form.html.twig') }}
+                {{ include('hospital_node/_form.html.twig') }}
 
-			    <a href="{{ path('hospital_node_index') }}">Retour à la liste</a>
-			</div>
-		</div>
-	</div>
+                <a href="{{ path('hospital_node_index') }}">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

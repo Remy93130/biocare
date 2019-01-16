@@ -33,6 +33,26 @@ class HospitalNodeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($hospitalNode->getTypeNode()->getWeight() == 0 && $hospitalNode->getAncestorNode() != null) {
+                $this->addFlash("danger", "Un hopital n'a pas de parent !");
+                return $this->render('hospital_node/new.html.twig', [
+                   'hospital_node' => $hospitalNode,
+                   'form' => $form->createView(),
+                ]);
+            } elseif ($hospitalNode->getTypeNode()->getWeight() != 0 && $hospitalNode->getAncestorNode() == null) {
+                $this->addFlash("danger", "Une structure a besoin d'un parent !");
+                return $this->render('hospital_node/new.html.twig', [
+                    'hospital_node' => $hospitalNode,
+                    'form' => $form->createView(),
+                ]);
+            } elseif ($hospitalNode->getTypeNode()->getWeight() != 0 
+                && $hospitalNode->getTypeNode()->getWeight() != $hospitalNode->getAncestorNode()->getTypeNode()->getWeight() + 1) {
+                    $this->addFlash("danger", "Le parent de la structure doit etre le superieur direct !");
+                    return $this->render('hospital_node/new.html.twig', [
+                        'hospital_node' => $hospitalNode,
+                        'form' => $form->createView(),
+                    ]);
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($hospitalNode);
             $entityManager->flush();
