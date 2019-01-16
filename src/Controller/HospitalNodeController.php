@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
 
 /**
  * @Route("/hospitalnode")
@@ -101,8 +102,12 @@ class HospitalNodeController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$hospitalNode->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($hospitalNode);
-            $entityManager->flush();
+            try {
+                $entityManager->remove($hospitalNode);
+                $entityManager->flush();
+            } catch (ForeignKeyConstraintViolationException $e) {
+                $this->addFlash("danger", "Il reste des employees qui travailles dans cette structure !");
+            }
         }
 
         return $this->redirectToRoute('hospital_node_index');

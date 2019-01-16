@@ -24,7 +24,7 @@ class HospitalNode
     private $workers;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Personnal", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="App\Entity\Personnal", cascade={"persist", "persist"})
      */
     private $responsible;
 
