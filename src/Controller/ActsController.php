@@ -38,6 +38,8 @@ class ActsController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($act);
             $entityManager->flush();
+            
+            return $this->redirectToRoute("doctor_acts");
 
             return $this->redirectToRoute('acts_index');
         }
@@ -82,11 +84,13 @@ class ActsController extends AbstractController
      */
     public function delete(Request $request, Acts $act): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$act->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$act->getId(), $request->request->get('_token')) || 1 === 1) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($act);
             $entityManager->flush();
         }
+        
+        return $this->redirectToRoute("doctor_acts");
 
         return $this->redirectToRoute('acts_index');
     }

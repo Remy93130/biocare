@@ -15,7 +15,7 @@ class SecurityController extends AbstractController
     public function login(AuthorizationCheckerInterface $authCheck, AuthenticationUtils $auth)
     {
         if (true == $authCheck->isGranted('ROLE_MEMBER')) {
-            return $this->redirectToRoute('main_index'); // @TODO: create the route for the redirection
+            return $this->redirectToRoute('main_index');
         }
         $error = $auth->getLastAuthenticationError();
         $lastUsername = $auth->getLastUsername();
