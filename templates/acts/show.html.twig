@@ -10,23 +10,37 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <th>Id</th>
-                            <td>{{ act.id }}</td>
+                            <th>Patient</th>
+                            <td>{{ act.dmp.surname }} {{ act.dmp.name }}<br>{{ act.dmp.socialNumber }}</td>
                         </tr>
                         <tr>
-                            <th>DateCreation</th>
+                            <th>Date de creation</th>
                             <td>{{ act.dateCreation ? act.dateCreation|date('Y-m-d') : '' }}</td>
                         </tr>
                         <tr>
-                            <th>State</th>
+                            <th>Etat</th>
                             <td>{{ act.state ? 'Terminé' : 'En cours' }}</td>
                         </tr>
+                        <tr>
+                            <th>Fichiers attaché a cet acte</th>
+                            <td>
+                                {% for file in act.Files %}
+                                    <a  href="{{ path('file_show', {'id': file.id}) }}" target="_blank">{{ file.name }}</a> <br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Options</th>
+                            <td>
+                                <a href="{{ path("file_new") }}">Ajouter un fichier</a><br>
+                                <a href="{{ path('acts_edit', {'id': act.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+
                     </tbody>
-                </table>
+                </table>                
 
-                <a href="{{ path('acts_index') }}">Retour à la liste</a>
-
-                <a href="{{ path('acts_edit', {'id': act.id}) }}">Modifier</a>
+                <a href="{{ path('acts_index') }}">Retour à la liste</a>                
 
                 {{ include('acts/_delete_form.html.twig') }}
             </div>
