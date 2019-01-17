@@ -22,9 +22,9 @@
                 Vous pouvez ensuite rechercher le dossier en tapant le nom du patient et vérifier celui-ci avec
                 son numéro de sécurité sociale. 
             </p>
-                <form>
+                <form method="get" action="{{ path("doctor_dmp_show") }}">
                     <div class="form-control">
-                        <select class="custom-select custom-select-lg mb-3">
+                        <select name="dmp" class="custom-select custom-select-lg mb-3">
                             {% for dmp in dmps %}
                                 <option value="{{ dmp.id }}">
                                     {{ dmp.surname }} {{ dmp.name }}

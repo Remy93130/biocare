@@ -35,5 +35,14 @@ class DoctorController extends AbstractController
              "dmps" => $dmps,
          ]);
     }
+    
+    /**
+     * @Route("home/search/request", name="doctor_dmp_show")
+     */
+    public function redirectDMP(Request $request): Response
+    {
+        $dmp = $request->get("dmp");
+        return $this->redirectToRoute("dmp_show", ["id" => $dmp]);
+    }
 }
 
