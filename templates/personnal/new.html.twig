@@ -2,11 +2,6 @@
 
 {% block title %}{{ parent() }}Nouveau personnel{% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-{% endblock %}
-
 {% block body %}
 	<div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
@@ -19,12 +14,4 @@
 			</div>
 		</div>
 	</div>
-{% endblock %}
-
-{% block javascripts %}
-	{{ parent() }}
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-	<script type="text/javascript">
-		$("#personnal_specialization").select2();
-	</script>
 {% endblock %}
