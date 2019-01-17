@@ -21,6 +21,7 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        $("#acts_DMP").prop("disabled", true);
+        $("#acts_DMP").prop("hidden", true);
+        $("label[for='acts_DMP']").remove();
     </script>
 {% endblock %}

@@ -67,6 +67,7 @@ class ActsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            return $this->redirectToRoute('doctor_acts');
             return $this->redirectToRoute('acts_index', ['id' => $act->getId()]);
         }
 

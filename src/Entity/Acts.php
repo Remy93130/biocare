@@ -158,6 +158,7 @@ class Acts
      */
     public function getDisplayName()
     {
-        return $this->author->getLastname() . " " . $this->dateCreation->format("Y-m-d");
+        return $this->author->getLastname() . " " . $this->dateCreation->format("Y-m-d")
+            . " / " . $this->DMP->getName() . " " . $this->DMP->getSurname();
     }
 }
