@@ -37,6 +37,8 @@ class FileController extends AbstractController
             $entityManager->persist($file);
             $entityManager->flush();
 
+            return $this->redirectToRoute('acts_show', ['id' => $file->getAct()->getId()]);
+            
             return $this->redirectToRoute('file_index');
         }
 
@@ -65,6 +67,7 @@ class FileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            return $this->redirectToRoute('acts_show', ['id' => $file->getAct()->getId()]);
             return $this->redirectToRoute('file_index', ['id' => $file->getId()]);
         }
 
@@ -85,6 +88,7 @@ class FileController extends AbstractController
             $entityManager->flush();
         }
 
+        return $this->redirectToRoute('acts_show', ['id' => $file->getAct()->getId()]);
         return $this->redirectToRoute('file_index');
     }
 }

@@ -2,13 +2,6 @@
 
 {% block title %}{{ parent() }}Nouveau fichier{% endblock %}
 
-{% block stylesheets %}
-	{{ parent() }}
-	<style type="text/css">
-
-	</style>
-{% endblock %}
-
 {% block body %}
 	<div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
@@ -17,7 +10,7 @@
 
 			    {{ include('file/_form.html.twig') }}
 
-			    <a href="{{ path('file_index') }}">Retour à la liste</a>
+			    {# <a href="{{ path('file_index') }}">Retour à la liste</a> #}
 			</div>
 		</div>
 	</div>

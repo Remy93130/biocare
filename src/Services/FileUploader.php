@@ -29,7 +29,6 @@ class FileUploader
     
     public function getTargetDirectory()
     {
-        echo $this->targetDirectory;
         return $this->targetDirectory;
     }
 }

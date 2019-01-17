@@ -6,6 +6,18 @@
     <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('doctor_acts') }}">Acte en cours</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('acts_show', {id: file.act.id}) }}">Acte</a></li>
+                        <li class="breadcrumb-item active">Fichier</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
                 <h1 class="text-center">Fichier</h1>
 
                 <table class="table">
@@ -29,5 +41,5 @@
 
                 {{ include('file/_delete_form.html.twig') }}
                 <br>
-                <a href="{{ path('file_index') }}">Retour à la liste</a>
+                <a href="{{ path('acts_show', {id: file.act.id}) }}">Retour à l'acte</a>
 {% endblock %}

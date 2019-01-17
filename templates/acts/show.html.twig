@@ -37,7 +37,7 @@
                             <th>Fichiers attaché a cet acte</th>
                             <td>
                                 {% for file in act.Files %}
-                                    <a  href="{{ path('file_show', {'id': file.id}) }}" target="_blank">{{ file.name }}</a> <br>
+                                    <a  href="{{ path('file_show', {'id': file.id}) }}">{{ file.name }}</a> <br>
                                 {% endfor %}
                             </td>
                         </tr>
@@ -52,8 +52,7 @@
                     </tbody>
                 </table>                
 
-                <a href="{{ path('doctor_acts') }}">Retour à la liste</a>                
-
+                <a href="{{ path('doctor_acts') }}" style="margin-right: 5%">Retour à l'acte</a>
                 {{ include('acts/_delete_form.html.twig') }}
             </div>
         </div>

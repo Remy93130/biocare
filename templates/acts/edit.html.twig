@@ -3,7 +3,19 @@
 {% block title %}{{ parent() }}Edition Acts{% endblock %}
 
 {% block body %}
+	<div class="noselect" style="display:none">noselect</div>
 	<div class="container-fluid" style="margin-top: 2%;">
+		<div class="row">
+		    <div class="col-lg-8 offset-lg-2">
+		        <nav aria-label="breadcrumb">
+		            <ol class="breadcrumb">
+		                <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+		                <li class="breadcrumb-item"><a href="{{ path('doctor_acts') }}">Acte en cours</a></li>
+		                <li class="breadcrumb-item active">Acte</li>
+		            </ol>
+		        </nav>
+		    </div>
+		</div>
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
 			    <h1>Editer Acts</h1>
@@ -12,13 +24,16 @@
 
 			    {{ include('acts/_delete_form.html.twig') }}
 
-			    <a href="{{ path('acts_index') }}">Retour à la liste</a>
+			    <a href="{{ path('doctor_acts') }}">Retour à la liste</a>
 			</div>
 		</div>
 	</div>
 {% endblock %}
 
 {% block javascripts %}
+	<script type="text/javascript">
+		var banane = true;
+	</script>
     {{ parent() }}
     <script type="text/javascript">
         $("#acts_DMP").prop("hidden", true);
