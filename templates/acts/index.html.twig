@@ -27,8 +27,8 @@
                             <td>{{ act.state ? 'Terminé' : 'En cours' }}</td>
                             <td>{{ act.dmp.surname }} {{ act.dmp.name }}<br>{{ act.dmp.socialNumber }}</td>
                             <td>
-                                <a href="{{ path('acts_show', {'id': act.id}) }}">show</a><br>
-                                {% if not act.state %}<a href="{{ path('acts_edit', {'id': act.id}) }}">edit</a>{% endif %}
+                                <a href="{{ path('acts_show', {'id': act.id}) }}">Voir</a><br>
+                                {% if not act.state %}<a href="{{ path('acts_edit', {'id': act.id}) }}">Modifier</a>{% endif %}
                             </td>
                         </tr>
                     {% else %}

@@ -18,6 +18,22 @@ class ActsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Acts::class);
     }
+    
+    /**
+     * Get all acts unfinished by a doctor
+     * @param int $idDoctor
+     * @return Acts[]
+     */
+    public function getDoctorUnifinishedActs($idDoctor) {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.author = :author')
+            ->setParameter('author', $idDoctor)
+            ->andWhere('a.state = 0')
+            ->orderBy('a.dateCreation', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return Acts[] Returns an array of Acts objects
