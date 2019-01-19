@@ -64,6 +64,8 @@ class DMPController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            
+            return $this->redirectToRoute("dmp_show", ['id' => $DMP->getId()]);
 
             return $this->redirectToRoute('dmp_index', ['id' => $DMP->getId()]);
         }
@@ -86,13 +88,5 @@ class DMPController extends AbstractController
         }
 
         return $this->redirectToRoute('dmp_index');
-    }
-    
-    /**
-     * @TODO: Check if the user have permissions for access to this item 
-     */
-    private function checkUserAuthorization()
-    {
-        
     }
 }
