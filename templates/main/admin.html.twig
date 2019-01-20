@@ -3,5 +3,49 @@
 {% block title %}{{ parent() }}Accueil{% endblock %}
 
 {% block body %}
-	<h1 class="text-center">Je suis un data admin</h1>
-{% endblock %}
+	<div class="container-fluid" style="margin-top: 2%">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				{% include 'flashbag.html.twig' %}
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="display-4">Accueil</h1>
+						<p class="lead">Bienvenue sur votre page principale, sélectionner une action</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<div class="row">
+					<div class="col-lg-4 offset-lg-1">
+						<div class="card" style="margin-bottom: 3vh">
+							<h5 class="card-header">Gérer les noeuds</h5>
+							<div class="card-body">
+								<p class="card-text">Pour ajouter un hôpital, pôle, etc...</p>
+								<a href="{{ path("hospital_node_index") }}" class="btn btn-primary">Commencer</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 offset-lg-1">
+						<div class="card" style="margin-bottom: 3vh">
+							<h5 class="card-header">Ajouter un nouveau personnel</h5>
+							<div class="card-body">
+								<p class="card-text">Nouveau membre hospitalier.</p>
+								<a href="{{ path("secretary_search") }}" class="btn btn-primary">Commencer</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 offset-lg-1">
+						<div class="card" style="margin-bottom: 3vh">
+							<h5 class="card-header">Gérer le personnel</h5>
+							<div class="card-body">
+								<p class="card-text">Changé affectation, spécialité, etc...</p>
+								<a href="#" class="btn btn-primary">Commencer</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>{% endblock %}

@@ -66,7 +66,8 @@ class HospitalNodeController extends AbstractController
                     'form' => $form->createView(),
                 ]);
             }
-
+            $this->addFlash("success", "Le noeud a bien ete ajoute.");
+            
             return $this->redirectToRoute('hospital_node_index');
         }
 

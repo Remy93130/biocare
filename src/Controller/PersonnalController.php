@@ -68,7 +68,13 @@ class PersonnalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('personnal_index', ['id' => $personnal->getId()]);
+            if ($this->getUser()->getRole()->getName() == "DATA_ADMIN") {
+                return $this->redirectToRoute(""); // @TODO: Get the route
+            }
+
+            $this->addFlash("success", "Votre profile a ete mis a jour.");
+
+            return $this->redirectToRoute('main_index');
         }
 
         return $this->render('personnal/edit.html.twig', [
