@@ -35,8 +35,5 @@
 		var banane = true;
 	</script>
     {{ parent() }}
-    <script type="text/javascript">
-        $("#acts_DMP").prop("hidden", true);
-        $("label[for='acts_DMP']").remove();
-    </script>
+    <script src='{{ asset("js.acts_edit.js") }}'></script>
 {% endblock %}
