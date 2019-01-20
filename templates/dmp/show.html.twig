@@ -17,6 +17,18 @@
                 </div>
             </div>
         {% endif %}
+        {% if app.user.role.name == "SECRETAIRE" %}
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ path("main_index") }}">Accueil</a></li>
+                            <li class="breadcrumb-item active">Voir DMP</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        {% endif %}
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
                 <h1 class="text-center">DMP</h1>
@@ -56,7 +68,7 @@
                 {% if app.user.role.name == "MEDECIN" %}
                     <a href="{{ path('doctor_search') }}">Nouvelle recherche</a><br>
                 {% else %}
-                    <a href="{{ path('dmp_index') }}">Retour à la liste</a><br>
+                    <a href="{{ path('main_index') }}">Retour</a><br>
                 {% endif %}
                 <a href="{{ path('dmp_edit', {'id': dmp.id}) }}">Modifier</a>
 

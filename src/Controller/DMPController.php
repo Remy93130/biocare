@@ -37,7 +37,7 @@ class DMPController extends AbstractController
             $entityManager->persist($DMP);
             $entityManager->flush();
 
-            return $this->redirectToRoute('dmp_index');
+            return $this->redirectToRoute('dmp_show', ['id' => $DMP->getId()]);
         }
 
         return $this->render('dmp/new.html.twig', [
