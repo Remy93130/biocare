@@ -26,3 +26,4 @@ composer.lock
 .settings/org.eclipse.wst.validation.prefs
 
 public/uploads/
+.vscode/launch.json
