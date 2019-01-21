@@ -45,4 +45,3 @@ class DoctorController extends AbstractController
         return $this->redirectToRoute("dmp_show", ["id" => $dmp]);
     }
 }
-
