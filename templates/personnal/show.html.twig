@@ -27,9 +27,24 @@
                             <td>{{ personnal.email }}</td>
                         </tr>
                         <tr>
-                            <th>Password</th>
-                            <td>{{ personnal.password }}</td>
+                            <th>Rôle</th>
+                            <td>{{ personnal.role.name|capitalize }}</td>
                         </tr>
+                        <tr>
+                            <th>Lieu de travail</th>
+                            <td>{{ (personnal.hospitalnode)? personnal.hospitalnode.name : "A définir" }}</td>
+                        </tr>
+                        {% if personnal.role.name == "MEDECIN" or personnal.role.name == "LABORATOIRE"
+                            and personnal.specialization %}
+                        <tr>
+                            <th>Spécialisations</th>
+                            <td>
+                                {% for spe in personnal.specialization %}
+                                    {{ spe.name }}<br>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endif %}
                     </tbody>
                 </table>
 

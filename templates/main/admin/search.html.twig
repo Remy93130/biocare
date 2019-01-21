@@ -9,26 +9,25 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
-                    <li class="breadcrumb-item active">Recherche DMP</li>
+                    <li class="breadcrumb-item active">Recherche personnel</li>
                   </ol>
                 </nav>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-            <h1 class="text-center">Recherche de DMP</h1>
+            <h1 class="text-center">Recherche de personnel</h1>
             <p class="text-justify">
-                Pour rechercher un Dossier Médical Partagé (DMP), cliquer sur la liste déroulante.
-                Vous pouvez ensuite rechercher le dossier en tapant le nom du patient et vérifier celui-ci avec
-                son numéro de sécurité sociale. 
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
             </p>
-                <form method="get" action="{{ path("doctor_dmp_show") }}">
+                <form method="get" action="{{ path("admin_personnal_show") }}">
                     <div class="form-control">
-                        <select name="dmp" class="custom-select custom-select-lg mb-3">
-                            {% for dmp in dmps %}
-                                <option value="{{ dmp.id }}">
-                                    {{ dmp.surname }} {{ dmp.name }}
-                                    - N° {{ dmp.socialNumber }}
+                        <select name="personnal" class="custom-select custom-select-lg mb-3">
+                            {% for personnal in personnals %}
+                                <option value="{{ personnal.id }}">
+                                    {{ personnal.surname }} {{ personnal.lastname }}
+                                    - {{ personnal.role.name|capitalize }}
                                 </option>
                             {% endfor %}
                         </select>

@@ -15,14 +15,14 @@ class RoleFixtures extends Fixture
             "MEDECIN",
             "SECRETAIRE",
             "LABORATOIRE",
-            "DATA_AMIN",
-            "INFERMIERE"
+            "DATA_ADMIN",
+            "INFIRMIERE"
         ];
         foreach ($roles as $role_name) {
             $role = new Role();
             $role->setName($role_name);
             $manager->persist($role);
         }
-        $manager->flush();
+        // $manager->flush();
     }
 }

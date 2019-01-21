@@ -23,6 +23,9 @@ class AdminController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/home/search-personnal/request", name="admin_personnal_show")
+     */
     public function redirectPersonnal(Request $request): Response
     {
         $personnal = $request->get("personnal");
