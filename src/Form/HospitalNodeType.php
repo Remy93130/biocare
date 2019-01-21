@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Personnal;
 use App\Entity\TypeNode;
+use Doctrine\ORM\EntityRepository;
 
 class HospitalNodeType extends AbstractType
 {
@@ -18,6 +19,13 @@ class HospitalNodeType extends AbstractType
             ->add('name')
             ->add('responsible', EntityType::class, [
                 'class' => Personnal::class,
+                "query_builder" => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->join("p.role", "r")
+                        ->andWhere("r.name = 'MEDECIN'")
+                        ->orderBy("p.surname", "ASC")
+                    ;
+                },
                 'choice_label' => function($p) {
                     return $p->getDisplayName();
                 }
