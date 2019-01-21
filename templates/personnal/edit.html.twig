@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }}Modifier son profil{% endblock %}
+{% block title %}{{ parent() }}Modifier profil{% endblock %}
 
 {% block body %}
 	<div class="noselect" style="display: none">{{ app.user.role.name }}</div>
 	<div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
             <div class="col-lg-8 offset-lg-2">
-			    <h1 class="text-center">Modifier son profil</h1>
+			    <h1 class="text-center">Modifier profil</h1>
 
 			    {{ include('personnal/_form.html.twig', {'button_label': 'Modifier'}) }}
 

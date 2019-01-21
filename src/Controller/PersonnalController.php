@@ -69,7 +69,7 @@ class PersonnalController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             if ($this->getUser()->getRole()->getName() == "DATA_ADMIN") {
-                return $this->redirectToRoute(""); // @TODO: Get the route
+                return $this->redirectToRoute("admin_search");
             }
 
             $this->addFlash("success", "Votre profile a ete mis a jour.");
