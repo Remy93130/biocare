@@ -12,11 +12,13 @@
                     <li class="breadcrumb-item active">Recherche personnel</li>
                   </ol>
                 </nav>
+                {% include("flashbag.html.twig") %}
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
             <h1 class="text-center">Recherche de personnel</h1>
+            <a href={{ path("personnal_new") }}>Ajouter un membre</a>
             <p class="text-justify">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,

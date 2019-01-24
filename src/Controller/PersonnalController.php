@@ -40,7 +40,9 @@ class PersonnalController extends AbstractController
             $entityManager->persist($personnal);
             $entityManager->flush();
 
-            return $this->redirectToRoute('personnal_index');
+            $this->addFlash("success", "L'employe a bien ete enregistre.");
+
+            return $this->redirectToRoute('admin_search');
         }
 
         return $this->render('personnal/new.html.twig', [
@@ -69,6 +71,7 @@ class PersonnalController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             if ($this->getUser()->getRole()->getName() == "DATA_ADMIN") {
+                $this->addFlash("info", "Les informations ont bien ete modifiees.");
                 return $this->redirectToRoute("admin_search");
             }
 
@@ -94,6 +97,8 @@ class PersonnalController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('personnal_index');
+        $this->addFlash("danger", "L'employe a bien ete retire de la base.");
+
+        return $this->redirectToRoute('admin_search');
     }
 }
