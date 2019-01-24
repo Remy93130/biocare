@@ -63,6 +63,11 @@ class DMP
      */
     private $acts;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $measures;
+
     public function __construct()
     {
         $this->histories = new ArrayCollection();
@@ -224,5 +229,17 @@ class DMP
     public function getDisplayName(): string
     {
         return $this->surname . " " . $this->name . " - " . $this->socialNumber;
+    }
+
+    public function getMeasures(): ?string
+    {
+        return $this->measures;
+    }
+
+    public function setMeasures(?string $measures): self
+    {
+        $this->measures = $measures;
+
+        return $this;
     }
 }

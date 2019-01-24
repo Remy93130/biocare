@@ -8,7 +8,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190116233314 extends AbstractMigration
+final class Version20190124135836 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -16,7 +16,7 @@ final class Version20190116233314 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE acts (id INT AUTO_INCREMENT NOT NULL, author_id INT NOT NULL, type_id INT NOT NULL, dmp_id INT NOT NULL, date_creation DATE NOT NULL, state TINYINT(1) NOT NULL, INDEX IDX_6A10A677F675F31B (author_id), INDEX IDX_6A10A677C54C8C93 (type_id), INDEX IDX_6A10A677B13AE3AD (dmp_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE dmp (id INT AUTO_INCREMENT NOT NULL, node_managing_id INT DEFAULT NULL, surname VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, social_number BIGINT UNSIGNED NOT NULL, birth_date DATE DEFAULT NULL, birth_place VARCHAR(255) DEFAULT NULL, address VARCHAR(255) DEFAULT NULL, INDEX IDX_30C9DE387E10622A (node_managing_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE dmp (id INT AUTO_INCREMENT NOT NULL, node_managing_id INT DEFAULT NULL, surname VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, social_number BIGINT UNSIGNED NOT NULL, birth_date DATE DEFAULT NULL, birth_place VARCHAR(255) DEFAULT NULL, address VARCHAR(255) DEFAULT NULL, measures LONGTEXT DEFAULT NULL, INDEX IDX_30C9DE387E10622A (node_managing_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE file (id INT AUTO_INCREMENT NOT NULL, act_id INT NOT NULL, file VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, INDEX IDX_8C9F3610D1A55B28 (act_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE history (id INT AUTO_INCREMENT NOT NULL, hospital_node_id INT DEFAULT NULL, date_e DATE NOT NULL, date_s DATE DEFAULT NULL, reason VARCHAR(255) NOT NULL, INDEX IDX_27BA704BB4B0FE2C (hospital_node_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE history_dmp (history_id INT NOT NULL, dmp_id INT NOT NULL, INDEX IDX_DE6683F71E058452 (history_id), INDEX IDX_DE6683F7B13AE3AD (dmp_id), PRIMARY KEY(history_id, dmp_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
