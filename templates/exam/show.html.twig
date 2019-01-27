@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exam{% endblock %}
+
+{% block body %}
+    <h1>Exam</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ exam.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ exam.title }}</td>
+            </tr>
+            <tr>
+                <th>State</th>
+                <td>{{ exam.state ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Content</th>
+                <td>{{ exam.content }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('exam_index') }}">back to list</a>
+
+    <a href="{{ path('exam_edit', {'id': exam.id}) }}">edit</a>
+
+    {{ include('exam/_delete_form.html.twig') }}
+{% endblock %}

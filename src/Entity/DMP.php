@@ -73,10 +73,16 @@ class DMP
      */
     private $dosage;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Exam", mappedBy="dmp")
+     */
+    private $exams;
+
     public function __construct()
     {
         $this->histories = new ArrayCollection();
         $this->acts = new ArrayCollection();
+        $this->exams = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -256,6 +262,37 @@ class DMP
     public function setDosage(?string $dosage): self
     {
         $this->dosage = $dosage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exam[]
+     */
+    public function getExams(): Collection
+    {
+        return $this->exams;
+    }
+
+    public function addExam(Exam $exam): self
+    {
+        if (!$this->exams->contains($exam)) {
+            $this->exams[] = $exam;
+            $exam->setDmp($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExam(Exam $exam): self
+    {
+        if ($this->exams->contains($exam)) {
+            $this->exams->removeElement($exam);
+            // set the owning side to null (unless already changed)
+            if ($exam->getDmp() === $this) {
+                $exam->setDmp(null);
+            }
+        }
 
         return $this;
     }
