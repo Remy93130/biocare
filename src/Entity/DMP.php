@@ -68,6 +68,11 @@ class DMP
      */
     private $measures;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $dosage;
+
     public function __construct()
     {
         $this->histories = new ArrayCollection();
@@ -239,6 +244,18 @@ class DMP
     public function setMeasures(?string $measures): self
     {
         $this->measures = $measures;
+
+        return $this;
+    }
+
+    public function getDosage(): ?string
+    {
+        return $this->dosage;
+    }
+
+    public function setDosage(?string $dosage): self
+    {
+        $this->dosage = $dosage;
 
         return $this;
     }

@@ -10,26 +10,55 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
                     <li class="breadcrumb-item"><a href="{{ path("nurse_search") }}">Recherche DMP</a></li>
-                    <li class="breadcrumb-item active">Ajout mesures</li>
+                    <li class="breadcrumb-item active">Gerer le patient</li>
                   </ol>
                 </nav>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-            <h1 class="text-center">Ajouter des mesures</h1>
-            <form method="post" action="{{ path("nurse_add_measure") }}">
-                <input type="hidden" name="dmp" value="{{ dmp.id }}">
-                <div class="form-group">
-                    <label for="old_measures">Mesures précédentes</label>
-                    <textarea class="form-control" id="old_measures" name="old_measures" rows="8" readonly>{{ dmp.measures }}</textarea>
+        <div class="row" style="margin-bottom: 3%;">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">Gestion du patient</h1>
+                <div class="accordion" id="collapse_nurse" style="margin-top: 2%;">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Voir posologie
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#collapse_nurse">
+                            <div class="card-body">
+                                {{ (dmp.dosage)? dmp.dosage|nl2br : "" }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Ajout de mesure
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#collapse_nurse">
+                            <div class="card-body">
+                                <form method="post" action="{{ path("nurse_add_measure") }}">
+                                    <input type="hidden" name="dmp" value="{{ dmp.id }}">
+                                    <div class="form-group">
+                                        <label for="old_measures">Mesures précédentes</label>
+                                        <textarea class="form-control" id="old_measures" name="old_measures" rows="8" readonly>{{ dmp.measures }}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="new_measures">Nouvelles mesures</label>
+                                        <textarea class="form-control" id="new_measures" name="new_measures" rows="8"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Valider</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="new_measures">Nouvelles mesures</label>
-                    <textarea class="form-control" id="new_measures" name="new_measures" rows="8"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Valider</button>
-            </form>
             </div>
         </div>
     </div>
