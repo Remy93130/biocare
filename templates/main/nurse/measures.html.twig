@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Ajouter des mesures{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path("nurse_search") }}">Recherche DMP</a></li>
+                    <li class="breadcrumb-item active">Ajout mesures</li>
+                  </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+            <h1 class="text-center">Ajouter des mesures</h1>
+            <form method="post" action="{{ path("nurse_add_measure") }}">
+                <input type="hidden" name="dmp" value="{{ dmp.id }}">
+                <div class="form-group">
+                    <label for="old_measures">Mesures précédentes</label>
+                    <textarea class="form-control" id="old_measures" name="old_measures" rows="8" readonly>{{ dmp.measures }}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="new_measures">Nouvelles mesures</label>
+                    <textarea class="form-control" id="new_measures" name="new_measures" rows="8"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

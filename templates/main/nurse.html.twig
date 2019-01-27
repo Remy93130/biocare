@@ -3,5 +3,41 @@
 {% block title %}{{ parent() }}Accueil{% endblock %}
 
 {% block body %}
-	<h1 class="text-center">Je suis une infirmiere</h1>
+	<div class="container-fluid" style="margin-top: 2%">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				{% include 'flashbag.html.twig' %}
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="display-4">Accueil</h1>
+						<p class="lead">Bienvenue sur votre page principale, sélectionner une action</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2">
+				<div class="row">
+					<div class="col-lg-4 offset-lg-1">
+						<div class="card" style="margin-bottom: 3vh">
+							<h5 class="card-header">Traiter un patient</h5>
+							<div class="card-body">
+								<p class="card-text">Voir les posologies d'un patient ou ajouter des mesures.</p>
+								<a href="{{ path("nurse_search") }}" class="btn btn-primary">Commencer</a>
+							</div>
+						</div>
+					</div>
+					{# <div class="col-lg-4 offset-lg-1">
+						<div class="card" style="margin-bottom: 3vh">
+							<h5 class="card-header">Voir mes documents</h5>
+							<div class="card-body">
+								<p class="card-text">Voir mes documents en cours en rédaction.</p>
+								<a href="{{ path("doctor_acts") }}" class="btn btn-primary">Commencer</a>
+							</div>
+						</div>
+					</div> #}
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
