@@ -19,6 +19,32 @@ class ExamRepository extends ServiceEntityRepository
         parent::__construct($registry, Exam::class);
     }
 
+    /**
+     * Get all finished exams
+     * @return Exam[]|null
+     */
+    public function getFinishedExam()
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.state = 1')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * Get all unfinished exams
+     * @return Exam[]|null
+     */
+    public function getUnfinishedExam()
+    {
+        return $this->createQueryBuilder("e")
+            ->andWhere("e.state = 0")
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Exam[] Returns an array of Exam objects
     //  */

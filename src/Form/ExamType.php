@@ -6,6 +6,7 @@ use App\Entity\Exam;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ExamType extends AbstractType
 {
@@ -13,9 +14,16 @@ class ExamType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('state')
+            ->add('state', CheckboxType::class, [
+                "required", false,
+            ])
             ->add('content')
-            ->add('dmp')
+            ->add('dmp', EntityType::class, [
+                'class' => DMP::class,
+                'choice_label' => function($dmp) {
+                    return $dmp->getDisplayName();
+                }
+            ])
         ;
     }
 
@@ -23,6 +31,7 @@ class ExamType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Exam::class,
+            'translation_domain' => 'form_exam',
         ]);
     }
 }

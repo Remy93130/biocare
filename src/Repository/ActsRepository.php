@@ -24,7 +24,8 @@ class ActsRepository extends ServiceEntityRepository
      * @param int $idDoctor
      * @return Acts[]
      */
-    public function getDoctorUnifinishedActs($idDoctor) {
+    public function getDoctorUnifinishedActs($idDoctor)
+    {
         return $this->createQueryBuilder('a')
             ->andWhere('a.author = :author')
             ->setParameter('author', $idDoctor)
