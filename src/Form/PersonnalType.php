@@ -11,8 +11,6 @@ use App\Entity\Role;
 use App\Entity\Specialization;
 use App\Entity\HospitalNode;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class PersonnalType extends AbstractType
 {
@@ -37,7 +35,10 @@ class PersonnalType extends AbstractType
                 'class' => HospitalNode::class,
                 'choice_label' => 'name',
             ])
-            // ->add('assignment', EntityType::class, ['class' => HospitalNode::class,'choice_label' => 'name',]) // For responsible then suck
+            /*->add('assignment', EntityType::class, [
+                'class' => HospitalNode::class,
+                'choice_label' => 'name',
+            ]) For responsible then suck*/
         ;
     }
 

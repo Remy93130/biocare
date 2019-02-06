@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class LaboController extends AbstractController
 {
+
     /**
      * @Route("/home/exam-new", name="labo_new_exam")
      */
@@ -19,20 +20,20 @@ class LaboController extends AbstractController
         $exams = $db->getUnfinishedExam();
         return $this->render("main/labo/exam.html.twig", [
             'type' => "new",
-            'exams' => $exams,
+            'exams' => $exams
         ]);
     }
 
     /**
      * @Route("home/exam-old", name="labo_old_exam")
      */
-     public function getOldExam(EntityManagerInterface $em): Response  
+    public function getOldExam(EntityManagerInterface $em): Response
     {
         $db = $em->getRepository(Exam::class);
         $exams = $db->getFinishedExam();
         return $this->render("main/labo/exam.html.twig", [
             'type' => "old",
-            'exams' => $exams,
+            'exams' => $exams
         ]);
     }
 
@@ -42,6 +43,8 @@ class LaboController extends AbstractController
     public function redirectExam(Request $request): Response
     {
         $exam = $request->get("exam");
-        return $this->redirectToRoute("exam_show", ["id" => $exam]);
+        return $this->redirectToRoute("exam_show", [
+            "id" => $exam
+        ]);
     }
 }

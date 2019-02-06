@@ -19,14 +19,14 @@ class HospitalNodeType extends AbstractType
             ->add('name')
             ->add('responsible', EntityType::class, [
                 'class' => Personnal::class,
-                "query_builder" => function(EntityRepository $er) {
+                "query_builder" => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->join("p.role", "r")
                         ->andWhere("r.name = 'MEDECIN'")
                         ->orderBy("p.surname", "ASC")
                     ;
                 },
-                'choice_label' => function($p) {
+                'choice_label' => function ($p) {
                     return $p->getDisplayName();
                 }
             ])

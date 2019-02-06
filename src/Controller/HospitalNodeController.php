@@ -47,8 +47,9 @@ class HospitalNodeController extends AbstractController
                     'hospital_node' => $hospitalNode,
                     'form' => $form->createView(),
                 ]);
-            } elseif ($hospitalNode->getTypeNode()->getWeight() != 0 
-                && $hospitalNode->getTypeNode()->getWeight() != $hospitalNode->getAncestorNode()->getTypeNode()->getWeight() + 1) {
+            } elseif ($hospitalNode->getTypeNode()->getWeight() != 0
+                && $hospitalNode->getTypeNode()->getWeight() != $hospitalNode
+                ->getAncestorNode()->getTypeNode()->getWeight() + 1) {
                     $this->addFlash("danger", "Le parent de la structure doit etre le superieur direct !");
                     return $this->render('hospital_node/new.html.twig', [
                         'hospital_node' => $hospitalNode,
@@ -116,7 +117,10 @@ class HospitalNodeController extends AbstractController
                 $entityManager->remove($hospitalNode);
                 $entityManager->flush();
             } catch (ForeignKeyConstraintViolationException $e) {
-                $this->addFlash("danger", "Il reste des employees qui travailles dans cette structure ou possede un fils !");
+                $this->addFlash(
+                    "danger",
+                    "Il reste des employees qui travailles dans cette structure ou possede un fils !"
+                );
             }
         }
 

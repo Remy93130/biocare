@@ -24,7 +24,7 @@ class ActsType extends AbstractType
             ])
             ->add('DMP', EntityType::class, [
                 'class' => DMP::class,
-                'choice_label' => function($dmp) {
+                'choice_label' => function ($dmp) {
                     return $dmp->getDisplayName();
                 }
             ])

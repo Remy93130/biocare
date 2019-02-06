@@ -25,7 +25,7 @@ class ExamType extends AbstractType
             ])
             ->add('dmp', EntityType::class, [
                 'class' => DMP::class,
-                'choice_label' => function($dmp) {
+                'choice_label' => function ($dmp) {
                     return $dmp->getDisplayName();
                 }
             ])

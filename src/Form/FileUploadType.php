@@ -20,12 +20,12 @@ class FileUploadType extends AbstractType
             ->add('file', FileType::class)
             ->add('act', EntityType::class, [
                 'class' => Acts::class,
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('a')
                         ->andWhere('a.state = 0')
                     ;
                 },
-                'choice_label' => function($act) {
+                'choice_label' => function ($act) {
                     return $act->getDisplayName();
                 }
             ])

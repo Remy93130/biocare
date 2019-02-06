@@ -20,7 +20,7 @@ class DMPType extends AbstractType
             ->add('surname', TextType::class)
             ->add('name', TextType::class)
             ->add('socialNumber', NumberType::class)
-            ->add('birthDate' , DateType::class, ["years" => range(date('Y') - 100, date('Y'))])
+            ->add('birthDate', DateType::class, ["years" => range(date('Y') - 100, date('Y'))])
             ->add('birthPlace', TextType::class)
             ->add('address', TextType::class)
             ->add('nodeManaging', EntityType::class, [

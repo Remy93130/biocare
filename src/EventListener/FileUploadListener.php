@@ -21,17 +21,18 @@ class FileUploadListener
     {
         $entity = $args->getEntity();
         
-        $this->UploadFile($entity);
+        $this->uploadFile($entity);
     }
     
     public function preUpdate(PreUpdateEventArgs $args)
     {
         $entity = $args->getEntity();
         
-        $this->UploadFile($entity);
+        $this->uploadFile($entity);
     }
     
-    private function UploadFile($entity) {
+    private function uploadFile($entity)
+    {
         if (!$entity instanceof File) {
             return;
         }
@@ -46,4 +47,3 @@ class FileUploadListener
         }
     }
 }
-

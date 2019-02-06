@@ -25,4 +25,3 @@ class TypeFixture extends Fixture
         $manager->flush();
     }
 }
-

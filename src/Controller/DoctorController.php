@@ -27,13 +27,13 @@ class DoctorController extends AbstractController
     /**
      * @Route("home/search", name="doctor_search")
      */
-     public function searchDMP(EntityManagerInterface $em): Response  
+    public function searchDMP(EntityManagerInterface $em): Response
     {
-         $db = $em->getRepository(DMP::class);
-         $dmps = $db->findAll();
-         return $this->render("main/doctor/search.html.twig", [
-             "dmps" => $dmps,
-         ]);
+        $db = $em->getRepository(DMP::class);
+        $dmps = $db->findAll();
+        return $this->render("main/doctor/search.html.twig", [
+            "dmps" => $dmps,
+        ]);
     }
     
     /**

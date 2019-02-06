@@ -25,10 +25,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Titre</th>
+                            <th>Auteur</th>
                             <th>Etat</th>
                             <th>Contenu</th>
-                            <th>Options</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,10 +41,8 @@
                             <tr>
                                 <td>{{ act.author.lastname }}</td>
                                 <td>{{ act.state ? 'Terminé' : 'En cours' }}</td>
-                                {# <td>{{ act.content|slice(0, 100) }}...</td> #}
                                 <td>
                                     <a href="{{ path('acts_show', {'id': act.id}) }}">Voir</a><br>
-                                    {# <a href="{{ path('acts_edit', {'id': acts.id}) }}">Modifier</a> #}
                                 </td>
                             </tr>
                         {% endif %}

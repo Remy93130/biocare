@@ -23,4 +23,3 @@ class SpecializationType extends AbstractType
         ]);
     }
 }
-
