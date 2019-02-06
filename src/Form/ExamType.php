@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\DMP;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ExamType extends AbstractType
 {
@@ -17,9 +18,11 @@ class ExamType extends AbstractType
         $builder
             ->add('title')
             ->add('state', CheckboxType::class, [
-                "required", false,
+                "required" => false,
             ])
-            ->add('content')
+            ->add('content', TextareaType::class, [
+                "attr" => ['rows' => 10]
+            ])
             ->add('dmp', EntityType::class, [
                 'class' => DMP::class,
                 'choice_label' => function($dmp) {

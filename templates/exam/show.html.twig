@@ -1,34 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Exam{% endblock %}
+{% block title %}{{ parent() }}Examen{% endblock %}
 
 {% block body %}
-    <h1>Exam</h1>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+                        {% if exam.state %}
+                            <li class="breadcrumb-item"><a href="{{ path('labo_old_exam') }}">Rechercher examens</a></li>
+                        {% else %}
+                            <li class="breadcrumb-item"><a href="{{ path('labo_new_exam') }}">Rechercher examens</a></li>
+                        {% endif %}
+                        <li class="breadcrumb-item active">Examen</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">Examen</h1>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ exam.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Titre</th>
+                                <td>{{ exam.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Etat</th>
+                                <td>{{ exam.state ? 'Terminé' : 'En cours' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contenu</th>
+                                <td>{{ exam.content|nl2br }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ exam.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ exam.title }}</td>
-            </tr>
-            <tr>
-                <th>State</th>
-                <td>{{ exam.state ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ exam.content }}</td>
-            </tr>
-        </tbody>
-    </table>
+                    {% if exam.state == 0 %}
+                        <a href="{{ path('exam_edit', {'id': exam.id}) }}">Modifier</a><br>
+                    {% endif %}
 
-    <a href="{{ path('exam_index') }}">back to list</a>
+                    {% if app.user.role.name == "LABORATOIRE" %}
+                        <a href="{{ path('labo_new_exam') }}">Retour</a>
+                    {% else %}
+                        <a href="{{ path('doctor_dmp_search') }}">Retour</a>
+                    {% endif %}
 
-    <a href="{{ path('exam_edit', {'id': exam.id}) }}">edit</a>
-
-    {{ include('exam/_delete_form.html.twig') }}
+                    {# {{ include('exam/_delete_form.html.twig') }} #}
+                </div>
+            </div>
+        </div>
 {% endblock %}

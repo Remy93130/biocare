@@ -36,8 +36,10 @@ class ExamController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($exam);
             $entityManager->flush();
+            
+            $this->addFlash("success", "Demande effectuer avec succes");
 
-            return $this->redirectToRoute('exam_index');
+            return $this->redirectToRoute('main_index');
         }
 
         return $this->render('exam/new.html.twig', [

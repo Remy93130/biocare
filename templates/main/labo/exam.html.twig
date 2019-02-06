@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }}Examens{% endblock %}
+
+{% block body %}
+    <div class="container-fluid" style="margin-top: 2%">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+                    <li class="breadcrumb-item active">Rechercher examens</li>
+                  </ol>
+                </nav>
+                {% include("flashbag.html.twig") %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+            <h1 class="text-center">{{ (type == 'old')? "Ancien examens" : "Examens en attente" }}</h1>
+            <p class="text-justify">
+                Pour rechercher un Dossier Médical Partagé (DMP), cliquer sur la liste déroulante.
+                Vous pouvez ensuite rechercher le dossier en tapant le nom du patient et vérifier celui-ci avec
+                son numéro de sécurité sociale.
+            </p>
+                <form method="get" action="{{ path("labo_exam_show") }}">
+                    <div class="form-control">
+                        <select name="exam" class="custom-select custom-select-lg mb-3">
+                            {% for exam in exams %}
+                                <option value="{{ exam.id }}">
+                                    {{ exam.title }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div><br>
+                    <button class="btn btn-primary" type="submit">Confirmer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

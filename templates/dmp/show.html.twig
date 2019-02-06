@@ -67,6 +67,8 @@
                 </table>
                 {% if app.user.role.name == "MEDECIN" %}
                     <a href="{{ path('doctor_search') }}">Nouvelle recherche</a><br>
+                    <a href="{{ path('dmp_exams', {"id": dmp.id}) }}">Voir examens liées</a><br>
+                    <a href="{{ path("dmp_acts", {"id": dmp.id}) }}">Voir actes liées</a> <br>
                 {% else %}
                     <a href="{{ path('main_index') }}">Retour</a><br>
                 {% endif %}

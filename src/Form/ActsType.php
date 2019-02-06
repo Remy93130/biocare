@@ -22,14 +22,14 @@ class ActsType extends AbstractType
                 'class' => Type::class,
                 'choice_label' => 'name',
             ])
-            ->add('state', CheckboxType::class, [
-                'required' => false
-            ])
             ->add('DMP', EntityType::class, [
                 'class' => DMP::class,
                 'choice_label' => function($dmp) {
                     return $dmp->getDisplayName();
                 }
+            ])
+            ->add('state', CheckboxType::class, [
+                'required' => false
             ])
         ;
     }

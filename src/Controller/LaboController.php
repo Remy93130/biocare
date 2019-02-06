@@ -18,28 +18,30 @@ class LaboController extends AbstractController
         $db = $em->getRepository(Exam::class);
         $exams = $db->getUnfinishedExam();
         return $this->render("main/labo/exam.html.twig", [
+            'type' => "new",
             'exams' => $exams,
         ]);
     }
-    
+
     /**
-     * @Route("home/exam-old", name="doctor_search")
+     * @Route("home/exam-old", name="labo_old_exam")
      */
-     public function searchDMP(EntityManagerInterface $em): Response  
+     public function getOldExam(EntityManagerInterface $em): Response  
     {
         $db = $em->getRepository(Exam::class);
         $exams = $db->getFinishedExam();
         return $this->render("main/labo/exam.html.twig", [
+            'type' => "old",
             'exams' => $exams,
         ]);
     }
-    
+
     /**
-     * @Route("home/search/request", name="doctor_dmp_show")
+     * @Route("home/search/exam", name="labo_exam_show")
      */
-    public function redirectDMP(Request $request): Response
+    public function redirectExam(Request $request): Response
     {
-        $dmp = $request->get("dmp");
-        return $this->redirectToRoute("dmp_show", ["id" => $dmp]);
+        $exam = $request->get("exam");
+        return $this->redirectToRoute("exam_show", ["id" => $exam]);
     }
 }

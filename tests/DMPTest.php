@@ -22,16 +22,16 @@ class DMPTest extends TestCase
             ->setSurname("Doe")
         ;
         $dmpRepository = $this->createMock(DMPRepository::class);
-        
+
         $dmpRepository->expects($this->any())
             ->method('find')
             ->willReturn($dmp);
-        
+
         $objectManager = $this->createMock(ObjectManager::class);
         $objectManager->expects($this->any())
             ->method('getRepository')
             ->willReturn($dmpRepository);
-            
+
         $this->assertEquals($dmp->getDisplayName(), "Doe John - 110011101");
     }
 }

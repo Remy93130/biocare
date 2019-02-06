@@ -31,9 +31,6 @@
 {% endblock %}
 
 {% block javascripts %}
-	<script type="text/javascript">
-		var banane = true;
-	</script>
     {{ parent() }}
-    <script src='{{ asset("js.acts_edit.js") }}'></script>
+    <script src='{{ asset("js/acts_edit.js") }}'></script>
 {% endblock %}

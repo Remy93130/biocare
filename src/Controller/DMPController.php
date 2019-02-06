@@ -89,4 +89,34 @@ class DMPController extends AbstractController
 
         return $this->redirectToRoute('dmp_index');
     }
+    
+    /**
+     * Return all exams rattach to a specific dmp
+     * @Route("/{id}/examens", name="dmp_exams", methods={"GET"})
+     * @param DMP $DMP
+     * @return Response
+     */
+    public function getExams(DMP $DMP): Response
+    {
+        $exams = $DMP->getExams();
+        return $this->render("dmp/exam.html.twig", [
+            "dmp" => $DMP,
+            "exams" => $exams,
+        ]);
+    }
+    
+    /**
+     * Return all acts related to a specific dmp
+     * @Route("/{id}/actes", name="dmp_acts", methods={"GET"})
+     * @param DMP $DMP
+     * @return Response
+     */
+    public function getActs(DMP $DMP): Response
+    {
+        $acts = $DMP->getActs();
+        return $this->render("dmp/acts.html.twig", [
+            "dmp" => $DMP,
+            "acts" => $acts,
+        ]);
+    }
 }

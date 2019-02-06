@@ -1,11 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Exam{% endblock %}
+{% block title %}Nouveau examen{% endblock %}
 
 {% block body %}
-    <h1>Create new Exam</h1>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
+                        <li class="breadcrumb-item active">Demande d'examen</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h1 class="text-center">Demander un examen</h1>
 
-    {{ include('exam/_form.html.twig') }}
+                {{ include('exam/_form.html.twig') }}
 
-    <a href="{{ path('exam_index') }}">back to list</a>
+                <a href="{{ path('main_index') }}">Retour</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='{{ asset("js/exam_new.js") }}'></script>
 {% endblock %}
