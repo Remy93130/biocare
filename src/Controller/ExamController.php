@@ -11,12 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @author remyb
  * @Route("/exam")
  */
 class ExamController extends AbstractController
 {
     /**
      * @Route("/", name="exam_index", methods={"GET"})
+     * @param ExamRepository $examRepository
+     * @return Response
      */
     public function index(ExamRepository $examRepository): Response
     {
@@ -25,6 +28,8 @@ class ExamController extends AbstractController
 
     /**
      * @Route("/new", name="exam_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +55,8 @@ class ExamController extends AbstractController
 
     /**
      * @Route("/{id}", name="exam_show", methods={"GET"})
+     * @param Exam $exam
+     * @return Response
      */
     public function show(Exam $exam): Response
     {
@@ -58,6 +65,9 @@ class ExamController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="exam_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Exam $exam
+     * @return Response
      */
     public function edit(Request $request, Exam $exam): Response
     {
@@ -78,6 +88,9 @@ class ExamController extends AbstractController
 
     /**
      * @Route("/{id}", name="exam_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Exam $exam
+     * @return Response
      */
     public function delete(Request $request, Exam $exam): Response
     {

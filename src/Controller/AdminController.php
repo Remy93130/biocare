@@ -9,10 +9,16 @@ use App\Entity\Personnal;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Manage admin action avalaible
+ * @author remyb
+ */
 class AdminController extends AbstractController
 {
     /**
      * @Route("/home/search-personnal", name="admin_search")
+     * @param EntityManagerInterface $em
+     * @return Response
      */
     public function searchPersonnal(EntityManagerInterface $em): Response
     {
@@ -25,6 +31,8 @@ class AdminController extends AbstractController
 
     /**
      * @Route("/home/search-personnal/request", name="admin_personnal_show")
+     * @param Request $request
+     * @return Response
      */
     public function redirectPersonnal(Request $request): Response
     {

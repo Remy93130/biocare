@@ -9,10 +9,16 @@ use App\Entity\Acts;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\DMP;
 
+/**
+ * @author remyb
+ *
+ */
 class DoctorController extends AbstractController
 {
     /**
      * @Route("/home/acts", name="doctor_acts")
+     * @param EntityManagerInterface $em
+     * @return Response
      */
     public function getActs(EntityManagerInterface $em): Response
     {
@@ -26,6 +32,8 @@ class DoctorController extends AbstractController
     
     /**
      * @Route("home/search", name="doctor_search")
+     * @param EntityManagerInterface $em
+     * @return Response
      */
     public function searchDMP(EntityManagerInterface $em): Response
     {
@@ -38,6 +46,8 @@ class DoctorController extends AbstractController
     
     /**
      * @Route("home/search/request", name="doctor_dmp_show")
+     * @param Request $request
+     * @return Response
      */
     public function redirectDMP(Request $request): Response
     {

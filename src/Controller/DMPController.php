@@ -11,12 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @author remyb
  * @Route("/dmp")
  */
 class DMPController extends AbstractController
 {
+
     /**
      * @Route("/", name="dmp_index", methods={"GET"})
+     * @param DMPRepository $DMPRepository
+     * @return Response
      */
     public function index(DMPRepository $DMPRepository): Response
     {
@@ -25,6 +29,8 @@ class DMPController extends AbstractController
 
     /**
      * @Route("/new", name="dmp_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -48,6 +54,8 @@ class DMPController extends AbstractController
 
     /**
      * @Route("/{id}", name="dmp_show", methods={"GET"})
+     * @param DMP $DMP
+     * @return Response
      */
     public function show(DMP $DMP): Response
     {
@@ -56,6 +64,9 @@ class DMPController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="dmp_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param DMP $DMP
+     * @return Response
      */
     public function edit(Request $request, DMP $DMP): Response
     {
@@ -78,6 +89,9 @@ class DMPController extends AbstractController
 
     /**
      * @Route("/{id}", name="dmp_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param DMP $DMP
+     * @return Response
      */
     public function delete(Request $request, DMP $DMP): Response
     {

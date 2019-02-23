@@ -11,12 +11,15 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @author remyb
  * @Route("/file")
  */
 class FileController extends AbstractController
 {
     /**
      * @Route("/", name="file_index", methods={"GET"})
+     * @param FileRepository $fileRepository
+     * @return Response
      */
     public function index(FileRepository $fileRepository): Response
     {
@@ -25,6 +28,8 @@ class FileController extends AbstractController
 
     /**
      * @Route("/new", name="file_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +55,8 @@ class FileController extends AbstractController
 
     /**
      * @Route("/{id}", name="file_show", methods={"GET"})
+     * @param File $file
+     * @return Response
      */
     public function show(File $file): Response
     {
@@ -58,6 +65,9 @@ class FileController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="file_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param File $file
+     * @return Response
      */
     public function edit(Request $request, File $file): Response
     {
@@ -79,6 +89,9 @@ class FileController extends AbstractController
 
     /**
      * @Route("/{id}", name="file_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param File $file
+     * @return Response
      */
     public function delete(Request $request, File $file): Response
     {

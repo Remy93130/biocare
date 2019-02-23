@@ -11,12 +11,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @author remyb
  * @Route("/acts")
+ *
  */
 class ActsController extends AbstractController
 {
     /**
      * @Route("/", name="acts_index", methods={"GET"})
+     * @param ActsRepository $actsRepository
+     * @return Response
      */
     public function index(ActsRepository $actsRepository): Response
     {
@@ -25,6 +29,8 @@ class ActsController extends AbstractController
 
     /**
      * @Route("/new", name="acts_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -52,6 +58,8 @@ class ActsController extends AbstractController
 
     /**
      * @Route("/{id}", name="acts_show", methods={"GET"})
+     * @param Acts $act
+     * @return Response
      */
     public function show(Acts $act): Response
     {
@@ -60,6 +68,9 @@ class ActsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="acts_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Acts $act
+     * @return Response
      */
     public function edit(Request $request, Acts $act): Response
     {
@@ -81,6 +92,9 @@ class ActsController extends AbstractController
 
     /**
      * @Route("/{id}", name="acts_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Acts $act
+     * @return Response
      */
     public function delete(Request $request, Acts $act): Response
     {
