@@ -1,11 +1,17 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "MEDECIN" %}
+    {% set parent = 'base_doctor.html.twig' %}
+{% elseif app.user.role.name == "LABORATOIRE" %}
+    {% set parent = 'base_laboratory.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}Nouveau examen{% endblock %}
 
 {% block body %}
     <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-10">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
@@ -15,7 +21,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-8 offset-lg-1">
                 <h1 class="text-center">Demander un examen</h1>
 
                 {{ include('exam/_form.html.twig') }}

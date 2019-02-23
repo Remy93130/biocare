@@ -1,4 +1,8 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "DATA_ADMIN" %}
+    {% set parent = 'base_admin.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}{{ parent() }}Structure{% endblock %}
 

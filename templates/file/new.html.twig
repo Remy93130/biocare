@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "MEDECIN" %}
+    {% set parent = 'base_doctor.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}{{ parent() }}Nouveau fichier{% endblock %}
 
 {% block body %}
 	<div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-10">
 			    <h1 class="text-center">Créer un nouveau fichier</h1>
 
 			    {{ include('file/_form.html.twig') }}

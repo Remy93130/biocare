@@ -1,4 +1,16 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "DATA_ADMIN" %}
+    {% set parent = 'base_admin.html.twig' %}
+{% elseif app.user.role.name == "SECRETAIRE" %}
+    {% set parent = 'base_secretary.html.twig' %}
+{% elseif app.user.role.name == "INFIRMIERE" %}
+    {% set parent = 'base_nurse.html.twig' %}
+{% elseif app.user.role.name == "MEDECIN" %}
+    {% set parent = 'base_doctor.html.twig' %}
+{% elseif app.user.role.name == "LABORATOIRE" %}
+    {% set parent = 'base_laboratory.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}{{ parent() }}Modifier profil{% endblock %}
 
@@ -6,7 +18,7 @@
 	<div class="noselect" style="display: none">{{ app.user.role.name }}</div>
 	<div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-10">
 			    <h1 class="text-center">Modifier profil</h1>
 
 			    {{ include('personnal/_form.html.twig', {'button_label': 'Modifier'}) }}

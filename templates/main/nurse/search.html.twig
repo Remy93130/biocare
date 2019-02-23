@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_nurse.html.twig' %}
 
 {% block title %}{{ parent() }}Recherche{% endblock %}
 
 {% block body %}
     <div class="container-fluid" style="margin-top: 2%">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col-lg-8">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('main_index') }}">Accueil</a></li>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 offset-lg-3">
+            <div class="col-lg-6 offset-lg-1">
             <h1 class="text-center">Recherche de DMP</h1>
             <p class="text-justify">
                 Pour rechercher un Dossier Médical Partagé (DMP), cliquer sur la liste déroulante.

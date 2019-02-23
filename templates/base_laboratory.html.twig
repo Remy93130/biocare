@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block functions %}{{ parent() }}
+	<li class="liste-item">
+		<a class="nav-link" href="{{ path('labo_new_exam') }}">Voir les demandes d'examens</a>
+	</li>
+	<li class="liste-item">
+		<a class="nav-link" href="{{ path('labo_old_exam') }}">Voir les anciens examens</a>
+	</li>
+{% endblock %}

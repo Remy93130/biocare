@@ -1,11 +1,15 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "DATA_ADMIN" %}
+    {% set parent = 'base_admin.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}{{ parent() }}Personnel index{% endblock %}
 
 {% block body %}
     <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="col">
                 <h1 class="text-center">Liste du personnel</h1>
 
                 <table class="table">

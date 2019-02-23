@@ -1,4 +1,10 @@
-{% extends 'base.html.twig' %}
+{% set parent = 'base.html.twig' %}
+{% if app.user.role.name == "MEDECIN" %}
+    {% set parent = 'base_doctor.html.twig' %}
+{% elseif app.user.role.name == "LABORATOIRE" %}
+    {% set parent = 'base_laboratory.html.twig' %}
+{% endif %}
+{%extends parent %}
 
 {% block title %}Exam index{% endblock %}
 
@@ -23,8 +29,8 @@
                 <td>{{ exam.state ? 'Yes' : 'No' }}</td>
                 <td>{{ exam.content }}</td>
                 <td>
-                    <a href="{{ path('exam_show', {'id': exam.id}) }}">show</a>
-                    <a href="{{ path('exam_edit', {'id': exam.id}) }}">edit</a>
+                    <a href="{{ path('exam_show', {'id': exam.id}) }}">Voir</a>
+                    <a href="{{ path('exam_edit', {'id': exam.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

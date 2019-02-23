@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block functions %}{{ parent() }}
+	<li class="search">
+        <a class="nav-link" href="{{ path('admin_search') }}">Nouvelle recherche</a>
+    </li>
+	<li class="liste-item">
+		<a class="nav-link" href="{{ path('hospital_node_index') }}">Gérer les noeuds</a>
+	</li>
+	<li class="liste-item">
+		<a class="nav-link" href="{{ path('admin_search') }}">Gérer le personnel</a>
+	</li>
+{% endblock %}
