@@ -1,0 +1,54 @@
+html {
+	overflow-x: hidden;
+}
+.main {
+	position: absolute;
+	top: 90px;
+	width: 100vw;
+}
+/* Menu des fonctionnalités, à gauche */
+.menu {
+	background-color: #00bfff;
+	height: 90px;
+}
+.left-menu {
+	position: fixed;
+	left: 0px;
+	width: 20vw;
+	z-index: 100;
+	padding: 0px;
+	height: 100%;
+}
+.liste-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+.search {
+	background-color: #c82333;
+	border-color: #bd2130;
+}
+.search a {
+	color: #fff;
+}
+.liste-item a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.liste-item a:hover {
+  background-color: #555;
+  color: white;
+}
+/* Partie à droite de la fenêtre */
+.content {
+	margin-top: 2vh;
+	margin-left: 20vw;
+	position: relative;
+	width: 80vw;
+	right: 0px;
+}
