@@ -69,6 +69,7 @@ class Personnal implements UserInterface
     {
         $this->specialization = new ArrayCollection();
         $this->acts = new ArrayCollection();
+        $this->exams = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,5 +236,4 @@ class Personnal implements UserInterface
     {
         return $this->lastname . ' ' . $this->surname . ' / ' . $this->email;
     }
-
 }

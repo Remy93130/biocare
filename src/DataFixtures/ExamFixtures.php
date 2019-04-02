@@ -18,6 +18,7 @@ class ExamFixtures extends Fixture
                 ->setDmp(null)
                 ->setContent($faker->sentence)
                 ->setTitle("Exam test no " . $i)
+                ->setAuthor("Jesus de Nazareth")
                 ->setState($i % 2)
             ;
             $manager->persist($exam);

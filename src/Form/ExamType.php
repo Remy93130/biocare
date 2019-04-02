@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\DMP;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class ExamType extends AbstractType
 {
@@ -29,6 +30,7 @@ class ExamType extends AbstractType
                     return $dmp->getDisplayName();
                 }
             ])
+            ->add('author', HiddenType::class, [    ])
         ;
     }
 

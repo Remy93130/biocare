@@ -9,6 +9,7 @@
 {% block title %}Nouveau examen{% endblock %}
 
 {% block body %}
+    <div id="author" style="display: none">{{ app.user.surname }} {{ app.user.lastname }}</div>
     <div class="container-fluid" style="margin-top: 2%;">
         <div class="row">
             <div class="col-lg-10">
