@@ -77,7 +77,7 @@ class ExamController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('exam_index', ['id' => $exam->getId()]);
+            return $this->redirectToRoute('labo_new_index');
         }
 
         return $this->render('exam/edit.html.twig', [
